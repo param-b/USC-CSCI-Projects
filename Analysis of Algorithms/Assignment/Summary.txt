@@ -1,0 +1,28 @@
+How to run the program:
+    Activate the python virtual environment using csci570\Scripts\activate.bat
+    The efficient program implements the divide and conquer algorithm and input is given through argument and outputs output.txt
+    The basic program implements the dynamic programming algorithm and input is given through argument and outputs output.txt
+
+Summary:
+    Needleman-Wunsch Algorithm
+        The basic dynamic approach over the runs consumes a lot of memory.
+        During testing of a program the available RAM was overran for the input string of size 2 ^ 15
+        
+
+    Hirschberg’s Algorithm
+        The divide and conquer approach helps to reduce the RAM Usage while taking a little more time.
+        There was no RAM overran occurring in this case for the input string of size 2 ^ 15
+Insights:
+    The basic dynamic programming approach as you can see from the graph is that the memory usage as we increase the size of the input really jumps up.
+    This is due to the fact that we store the whole table in the memory and for large strings the size can reach very large numbers which may make it impossible to save the whole table of answers in the memory.
+    This why this algorithm is not really preferred in genome sequencing because the size of DNA is vry large
+
+    The Memory efficient version of the algorithm as we can see compromises time for memory.
+    In this version we can see there is some difference in time between the basic version and the memory version.
+    This is due to the fact that we do not store the whole memory in the table instead we use a divide and conquer approach where we can keep only last two columns of the basic dynamic approach. 
+    To find the actual Alignment we build the algorithm backwards from the end to get the alignment and not having to keep the whole table in the memory.
+    Memory Efficient Sequence Alignment algorithm work in O(mn) time using only O(m+ n) space
+
+Work Done & Contributions:
+    7446282271: Integration of Code; Summary and Graph Creation; 
+

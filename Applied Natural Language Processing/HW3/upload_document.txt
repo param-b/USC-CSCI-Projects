@@ -1,0 +1,36 @@
+Sentiment Classification on Cipher Text
+### Method Name ###
+Use a two-part name to describe your method, e.g. bag-of-words + FFNN, cipherword word2vec + BiLSTM, etc.
+cipherword word2vec + hierarchical attention network
+
+### Representation of sentence ###
+Use up to 3 sentences to describe how you obtained the representation/features of each ciphertext sentence. E.g., bag-of-words? trained a word2vec or fasttext on all sentences from scratch?
+I used the gensim word2vec module to train on the corpus. 
+I merged the train + dev + test datasets and then used spacetokenizer to create the  dataset
+Trained the word2vec from scratch of dimension 100, I trained it for 10 iterations..
+
+### Classifier ###
+Use up to 5 sentences to describe how you implemented your classifier. What encoder did you use and what was the learning objective?
+I used hierarchical attention network with max sentence length as 100 and max sentence as 1.
+hierarchical attention network work by giving individual attention to word and sentences, the sentence attention not that useful because only one sentence, however model gave good accuracy that is why was used.
+The hierarchical attention network was implemented by first creating a embedding layer with the help of gensim and numpy.
+The architecture used a bidirectional gru and an custom attention network to process the inputs from the input layer.
+The whole architecture was implemented using Keras using the original paper code as reference and modified to current use case.
+
+
+### Training & Development ###
+Up to 5 sentences: how did you evaluate your solution using the dev set before submitting to the leaderboard? What are some key hyperparameter values (e.g., optimizer, learning rate, batch size, etc.)? How did you terminate the training (using a fixed #epochs, early stopping based on dev set performance)?
+The learning was done on categorical cross-entropy loss and evaluation on dev set.
+Learning rate was decreased on plateau and adam optimizer with default values for better convergence.
+Batch Size was 32 and I trained for 20 epochs with no early stopping, during trial of models it was trained only for 10 epochs.
+The model was finally trained on train + dev set.
+I removed frequent word and punctuations from dataset before training and while making predictions too.
+
+
+### Other methods ###
+Did you try other methods than the submitted one?
+word2vec + BiLSTM, fasttext + BiLSTM, fasttext + hierarchical attention network
+
+### Packages ###
+List the key python packages you have used in this assignment.
+Keras Nltk Gensim Numpy
